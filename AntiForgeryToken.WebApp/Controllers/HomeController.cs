@@ -25,8 +25,8 @@ namespace AntiForgeryToken.WebApp.Controllers
         public IActionResult Index()
         {
             // Generate a new antiforgery token and pass it to the view
-            var token = _antiforgery.GetAndStoreTokens(HttpContext).RequestToken;
-            ViewBag.AntiForgeryToken = token;
+            //var token = _antiforgery.GetAndStoreTokens(HttpContext).RequestToken;
+            //ViewBag.AntiForgeryToken = token;
             return View();
         }
 
