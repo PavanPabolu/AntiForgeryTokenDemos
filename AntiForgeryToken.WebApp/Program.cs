@@ -7,10 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews(options =>
 {
-    options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+    //To enable the antiforgery token validation globally.
+    //To use the AutoValidateAntiforgeryTokenAttribute to automatically validate the antiforgery token for all non-GET, HEAD, OPTIONS, and TRACE HTTP methods. This ensures that all POST, PUT, PATCH, and DELETE requests are protected by default, without the need to manually add the ValidateAntiForgeryToken attribute to each action method.
+    //options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
 });
-
-
+builder.Services.AddAntiforgery();
 
 
 var app = builder.Build();
@@ -29,6 +30,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+//To add the antiforgery middleware to the request pipeline, which will automatically validate the antiforgery token for all non-GET, HEAD, OPTIONS, and TRACE HTTP methods.
+app.UseAntiforgery();
 
 app.MapControllerRoute(
     name: "default",

@@ -16,10 +16,6 @@ namespace AntiForgeryToken.WebApp.Controllers
             _antiforgery = antiforgery;
         }
 
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
 
         [HttpGet]
         public IActionResult Index()
